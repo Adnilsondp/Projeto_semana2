@@ -1,5 +1,3 @@
-# test_main.py
-
 import unittest
 from main import soma_tres
 
@@ -7,7 +5,7 @@ from main import soma_tres
 class TestSomaTres(unittest.TestCase):
     def test_soma_tres_inteiros_positivos(self):
         """Testa a soma de três números inteiros positivos."""
-        self.assertEqual(soma_tres(1, 2, 3), 7)  
+        self.assertEqual(soma_tres(1, 2, 3), 6)
 
     def test_soma_tres_decimais(self):
         """Testa a soma de três números decimais."""

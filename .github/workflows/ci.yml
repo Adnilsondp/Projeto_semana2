@@ -33,3 +33,16 @@ jobs:
     - name: Run unit tests
       run: |
         python -m unittest test_main.py
+
+    - name: Create Issue on Failure
+      if: failure()
+      uses: actions/github-script@v6
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        script: |
+          github.rest.issues.create({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            title: 'Workflow CI Pipeline Failed',
+            body: 'The CI Pipeline failed. Please check the workflow run for details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
+          })

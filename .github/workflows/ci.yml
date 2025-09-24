@@ -36,13 +36,10 @@ jobs:
 
     - name: Create Issue on Failure
       if: failure()
-      uses: actions/github-script@v6
+      uses: actions-ecosystem/action-create-issue@v1
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
-        script: |
-          github.rest.issues.create({
-            owner: context.repo.owner,
-            repo: context.repo.repo,
-            title: 'Workflow CI Pipeline Failed',
-            body: 'The CI Pipeline failed. Please check the workflow run for details: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}'
-          })
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        title: 'Workflow CI Pipeline Failed'
+        body: |
+          The CI Pipeline failed. Please check the workflow run for details:
+          ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}

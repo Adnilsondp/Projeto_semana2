@@ -1,6 +1,6 @@
 import unittest
-
 from main import soma_tres
+
 
 class TestSomaTres(unittest.TestCase):
     def test_soma_tres_inteiros_positivos(self):
@@ -22,6 +22,7 @@ class TestSomaTres(unittest.TestCase):
     def test_soma_tres_zeros(self):
         """Testa a soma de três zeros."""
         self.assertEqual(soma_tres(0, 0, 0), 0)
+
 
 if __name__ == "__main__":
     unittest.main()

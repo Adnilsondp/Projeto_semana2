@@ -9,7 +9,7 @@ on:
       - main
 
 jobs:
-  lint:
+  lint-and-test:
     runs-on: ubuntu-latest
 
     steps:
@@ -29,3 +29,7 @@ jobs:
     - name: Run flake8
       run: |
         flake8 . --max-line-length=88 --extend-ignore=E203
+
+    - name: Run unit tests
+      run: |
+        python -m unittest test_main.py
